@@ -26,8 +26,11 @@ namespace ProfitRobots.MQ4Inject
             foreach (Match match in matches)
             {
                 var filePath = System.IO.Path.Combine(basePath, match.Groups[1].Value);
-                Console.WriteLine(filePath);
-                Console.WriteLine(match.Groups[1].Value);
+                if (!System.IO.File.Exists(filePath))
+                {
+                    Console.WriteLine(match.Groups[1].Value + " skipped");
+                    continue;
+                }
                 var module = System.IO.File.ReadAllText(filePath);
                 var path = System.IO.Directory.GetParent(filePath).FullName;
                 module = Replace(module, path);
