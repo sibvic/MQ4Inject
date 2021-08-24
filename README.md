@@ -2,6 +2,30 @@
 
 Injects code from includes into mq4/mq5 files
 
+## How to use
+
+It's a command-line utility. 
+
+There are two mandatory parameters: --sources and --source-file
+
+source-file is a file you need insert includes to.
+
+sources is a path to a directory with included files.
+
+Example:
+
+MQ4Inject.exe --soruces "c:/mql4includes" --source-file "myea.mq4" --target-file "myea_full.mq4"
+
+This command will replace all #include <blahblahblah.mq4> lines with the code from c:/mql4includes/blahblahblah.mq4 and will write the resulting code
+into myea_fill.mq4. You can omit --target-file parameter. The utility will write the code into the source-file in this case. All includes in the included files 
+will be replaces as well.
+
+## How to compine
+
+Install Microsoft .Net Core 3.0
+
+Go to the project folder in the console and type dotnet build. Or build it in Visual Studio
+
 ## Related projects
 
 [Lint utility for indicators/strategies](https://github.com/sibvic/fxlint)
