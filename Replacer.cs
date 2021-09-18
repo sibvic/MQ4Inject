@@ -33,7 +33,7 @@ namespace ProfitRobots.MQ4Inject
                 }
                 var module = System.IO.File.ReadAllText(filePath);
                 var path = System.IO.Directory.GetParent(filePath).FullName;
-                module = Replace(module, path);
+                module = Replace(module, basePath);
                 var filename = System.IO.Path.GetFileName(match.Groups[1].Value);
                 if (_alreadyIncluded.Contains(filename))
                 {
